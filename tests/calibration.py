@@ -3,10 +3,10 @@
 import jax
 import numpy as np
 
-from geodual.calibration import Calibration
-from geodual.data import Examples
-from geodual.model import Network, Weights
-from geodual.training import Config, State
+from edc.calibration import Calibration
+from edc.data import Examples
+from edc.model import Network, Weights
+from edc.training import Config, State
 
 
 def test_calibration_preserves_weights_and_uses_disjoint_queries() -> None:

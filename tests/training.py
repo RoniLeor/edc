@@ -8,9 +8,9 @@ import jax.numpy as jnp
 import numpy as np
 import pytest
 
-from geodual.cli import main
-from geodual.data import Dataset, Examples
-from geodual.training import Config, State, Trainer
+from edc.cli import main
+from edc.data import Dataset, Examples
+from edc.training import Config, State, Trainer
 
 
 @pytest.mark.parametrize("method", ["bp", "pc", "alm", "gdi", "mismatch"])
@@ -100,8 +100,8 @@ def test_invalid_training_and_nonfinite_evaluation() -> None:
 def test_cli_writes_summary_and_preserves_outputs(tmp_path: Path) -> None:
     run: MagicMock
     with (
-        patch("geodual.cli.load"),
-        patch("geodual.cli.Trainer.run", return_value={"ok": True}) as run,
+        patch("edc.cli.load"),
+        patch("edc.cli.Trainer.run", return_value={"ok": True}) as run,
     ):
         main(["--dataset", "mnist", "--method", "bp", "--output", str(tmp_path)])
         assert run.call_count == 1

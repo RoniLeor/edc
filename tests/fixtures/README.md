@@ -10,8 +10,8 @@ budget=8, inner_steps=1, weight_credit_timing='pre_dual_energy'.
 Arrays: first/hidden/readout parameters, x/y, forward hidden states, final settled states,
 pre-final-dual weight-credit multipliers, and each parameter group's PC-ALM gradient.
 Upstream `init_params`, `forward`, `run_pcalm`, and `method_grad` produced these arrays;
-only the hidden-layer lists were stacked to match GeoDual's vectorized representation.
+only the hidden-layer lists were stacked to match EDC's vectorized representation.
 
 The test compares production outputs against this frozen oracle. Floating-point tolerances
 account for different XLA fusion and reduction order; no expected values are generated from
-GeoDual itself. See THIRD_PARTY_LICENSE at the project root for the upstream MIT notice.
+EDC itself. See THIRD_PARTY_LICENSE at the project root for the upstream MIT notice.

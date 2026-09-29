@@ -9,10 +9,10 @@ import jax.numpy as jnp
 import numpy as np
 import pytest
 
-from geodual.cli import main
-from geodual.model import Network, Weights
-from geodual.settling import Equilibrium, Settler
-from geodual.training import Config, State, Trainer
+from edc.cli import main
+from edc.model import Network, Weights
+from edc.settling import Equilibrium, Settler
+from edc.training import Config, State, Trainer
 
 
 @pytest.mark.parametrize("layers", [4, 5])
@@ -96,7 +96,7 @@ def test_elastic_validation_and_cli(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="requires GDI"):
         Config(method="bp", elastic=0.05)
     trainer: MagicMock
-    with patch("geodual.cli.load"), patch("geodual.cli.Trainer") as trainer:
+    with patch("edc.cli.load"), patch("edc.cli.Trainer") as trainer:
         trainer.return_value.run.return_value = {"ok": True}
         main(["--method", "gdi", "--steps", "16", "--elastic", "0.05", "--output", str(tmp_path)])
         assert trainer.call_args.kwargs["config"].elastic == 0.05

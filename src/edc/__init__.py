@@ -1,4 +1,4 @@
-"""Geometric Dual Initialization for predictive coding."""
+"""Elastic Dual Coupling for predictive coding."""
 
 from .model import Network, Weights
 from .settling import Settler

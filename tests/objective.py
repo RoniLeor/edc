@@ -8,11 +8,11 @@ import jax.numpy as jnp
 import numpy as np
 import pytest
 
-from geodual.cli import main
-from geodual.data import Examples
-from geodual.memory import Memory
-from geodual.model import Network
-from geodual.training import Config, State, Trainer
+from edc.cli import main
+from edc.data import Examples
+from edc.memory import Memory
+from edc.model import Network
+from edc.training import Config, State, Trainer
 
 
 @pytest.mark.parametrize("objective", ["mse", "ce"])
@@ -95,7 +95,7 @@ def test_objective_validation_and_cli(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="Objective"):
         Network(objective="unknown")
     trainer: MagicMock
-    with patch("geodual.cli.load"), patch("geodual.cli.Trainer") as trainer:
+    with patch("edc.cli.load"), patch("edc.cli.Trainer") as trainer:
         trainer.return_value.run.return_value = {"ok": True}
         main(["--objective", "ce", "--output", str(tmp_path)])
         assert trainer.call_args.kwargs["config"].objective == "ce"

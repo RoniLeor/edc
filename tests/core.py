@@ -7,9 +7,9 @@ import jax.numpy as jnp
 import numpy as np
 import pytest
 
-from geodual.memory import Memory, Records
-from geodual.model import Network, Weights
-from geodual.settling import Equilibrium, Settler
+from edc.memory import Memory, Records
+from edc.model import Network, Weights
+from edc.settling import Equilibrium, Settler
 
 
 def test_reference_parity() -> None:

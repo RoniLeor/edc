@@ -9,7 +9,7 @@ for epochs in 5 10; do
         for method in alm gdi; do
           elastic=0
           if [ "$method" = gdi ]; then elastic=0.05; fi
-          uv run geodual --dataset "$dataset" --method "$method" --objective mse \
+          uv run edc --dataset "$dataset" --method "$method" --objective mse \
             --epochs "$epochs" --seed "$seed" --steps "$steps" --elastic "$elastic" \
             --output "$output/$dataset-$method-$steps-$epochs-$seed"
         done

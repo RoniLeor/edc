@@ -11,7 +11,7 @@ import numpy as np
 import pytest
 from numpy.typing import NDArray
 
-from geodual.data import Dataset, Examples, fetch, load, partition, read_idx
+from edc.data import Dataset, Examples, fetch, load, partition, read_idx
 
 
 def test_idx_validation(tmp_path: Path) -> None:
@@ -77,9 +77,9 @@ def test_load_uses_official_test_separately(tmp_path: Path) -> None:
     test_images: NDArray[np.uint8] = np.ones((2, 2, 2), dtype=np.uint8)
     test_labels: NDArray[np.uint8] = np.arange(2, dtype=np.uint8)
     with (
-        patch("geodual.data.fetch", return_value=tmp_path / "unused"),
+        patch("edc.data.fetch", return_value=tmp_path / "unused"),
         patch(
-            "geodual.data.read_idx",
+            "edc.data.read_idx",
             side_effect=[train_images, train_labels, test_images, test_labels],
         ),
     ):

@@ -8,10 +8,10 @@ from pathlib import Path
 import jax.numpy as jnp
 import numpy as np
 
-from geodual.alignment import Alignment, Measurement
-from geodual.data import Dataset, load
-from geodual.model import Weights
-from geodual.training import Config
+from edc.alignment import Alignment, Measurement
+from edc.data import Dataset, load
+from edc.model import Weights
+from edc.training import Config
 
 parser: argparse.ArgumentParser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--data", type=Path, default=Path("data"))

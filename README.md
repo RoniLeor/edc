@@ -67,8 +67,8 @@ activations, output errors and labels, excluding the same original image.
 The original pre-final-dual weight-credit timing is preserved. Local gradients
 and Adam are still used; this is not gradient-free learning.
 
-Core implementation: [settling.py](src/geodual/settling.py),
-[memory.py](src/geodual/memory.py), [training.py](src/geodual/training.py).
+Core implementation: [settling.py](src/edc/settling.py),
+[memory.py](src/edc/memory.py), [training.py](src/edc/training.py).
 
 ## Gradient comparison
 
@@ -96,7 +96,7 @@ full metric depends on layer-gradient magnitudes; these two views are not
 interchangeable. Neither alone proves the cause of the accuracy improvement.
 
 [Raw gradient measurements](benchmarks/gradients.json) ·
-[Metric implementation](src/geodual/alignment.py) ·
+[Metric implementation](src/edc/alignment.py) ·
 [Reference checkpoints](benchmarks/reference)
 
 ## Reproduce
@@ -110,7 +110,7 @@ cd edc
 uv sync --frozen --python 3.11
 
 # One elastic-GDI experiment (downloads the checksum-verified dataset).
-uv run geodual --dataset mnist --method gdi --steps 16 --epochs 10 \
+uv run edc --dataset mnist --method gdi --steps 16 --epochs 10 \
   --elastic 0.05 --seed 0 --output results/example
 
 # Matched PC-ALM: --method alm --elastic 0

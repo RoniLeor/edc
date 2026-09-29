@@ -5,10 +5,10 @@ import jax.numpy as jnp
 import numpy as np
 import pytest
 
-from geodual.alignment import Alignment, Measurement, cosine
-from geodual.data import Examples
-from geodual.model import Weights
-from geodual.training import Config, Trainer
+from edc.alignment import Alignment, Measurement, cosine
+from edc.data import Examples
+from edc.model import Weights
+from edc.training import Config, Trainer
 
 
 def test_global_cosine_weights_parameters_instead_of_layers() -> None:
