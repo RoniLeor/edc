@@ -51,7 +51,7 @@ def test_calibration_preserves_weights_and_uses_disjoint_queries() -> None:
     for left, right in zip(state.weights, weights, strict=True):
         np.testing.assert_array_equal(actual=left, desired=right)
     rows: dict[str, object] = calibration(weights=weights, examples=examples)
-    assert set(rows) == {"zero", "gdi4", "gdi16", "spline16"}
+    assert set(rows) == {"zero", "gdi4", "gdi16"}
     zero: dict[str, float] = cast(dict[str, float], rows["zero"])
     assert zero["initial_relative_rmse"] == 1.0
     row: object

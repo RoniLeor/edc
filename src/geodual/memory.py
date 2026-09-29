@@ -7,8 +7,6 @@ from typing import NamedTuple
 import jax
 import jax.numpy as jnp
 
-from .spline import Spline
-
 
 class Records(NamedTuple):
     """Fixed-shape FIFO bank, kept in the compiled training state."""
@@ -35,16 +33,8 @@ class Memory:
     temperature: float = 0.1
     mismatch: bool = False
     drift_scale: float = 0.0
-    initializer: str = "average"
-    spline_smoothing: float = 0.1
 
     def __post_init__(self) -> None:
-        if self.initializer not in {"average", "spline"}:
-            raise ValueError("Unknown multiplier initializer")
-        if not isfinite(self.spline_smoothing) or self.spline_smoothing <= 0:
-            raise ValueError("Positive finite spline smoothing required")
-        if self.initializer == "spline" and self.neighbors < 6:
-            raise ValueError("Spline requires at least six neighbors")
         if not isfinite(self.drift_scale) or self.drift_scale < 0:
             raise ValueError("Drift scale must be finite and nonnegative")
         if not 1 <= self.neighbors <= self.capacity or not 0 <= self.strength <= 1:
@@ -111,13 +101,6 @@ class Memory:
                 raise ValueError("Optimizer movement is required when drift gating is enabled")
             distance: jax.Array = jnp.maximum(movement - bank.movement[indices], 0)
             confidence *= jnp.exp(-distance / self.drift_scale)
-        if self.initializer == "spline":
-            weights = Spline(smoothing=self.spline_smoothing)(
-                query=jnp.concatenate((key_norm, error_norm), axis=-1),
-                points=jnp.concatenate((bank.keys[indices], bank.errors[indices]), axis=-1),
-                fallback=weights,
-                available=available,
-            ).weights
         initial: jax.Array = self.strength * jnp.einsum(
             "bk,bklw->lbw", weights * confidence, bank.duals[indices]
         )
@@ -135,8 +118,6 @@ class Memory:
         movement: jax.Array | None = None,
     ) -> jax.Array:
         """Zero, ordinary weighted average, and strongest valid individual neighbor."""
-        if self.initializer != "average":
-            raise ValueError("Candidate selection requires average retrieval")
         average: jax.Array = self(
             bank=bank,
             keys=keys,

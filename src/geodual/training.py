@@ -44,8 +44,6 @@ class Config:
     objective: str = "mse"
     drift_scale: float = 0.0
     neighbors: int = 4
-    initializer: str = "average"
-    spline_smoothing: float = 0.1
     selector: str = "none"
     elastic: float = 0.0
 
@@ -58,19 +56,10 @@ class Config:
             raise ValueError("Elastic coupling requires GDI, no selector, and at least four steps")
         if self.selector not in {"none", "residual", "learned"}:
             raise ValueError("Unknown energy selector")
-        if self.selector != "none" and (
-            self.method != "gdi" or self.objective != "mse" or self.initializer != "average"
-        ):
+        if self.selector != "none" and (self.method != "gdi" or self.objective != "mse"):
             raise ValueError("Energy selection requires squared-error GDI with average retrieval")
-        if self.initializer not in {"average", "spline"}:
-            raise ValueError("Unknown multiplier initializer")
         if not 1 <= self.neighbors <= self.capacity:
             raise ValueError("Neighbors must fit memory capacity")
-        if not np.isfinite(self.spline_smoothing) or self.spline_smoothing <= 0:
-            raise ValueError("Positive finite spline smoothing required")
-        if self.initializer == "spline":
-            if self.method != "gdi" or self.neighbors < 6:
-                raise ValueError("Spline requires GDI with at least six neighbors")
         if not np.isfinite(self.drift_scale) or self.drift_scale < 0:
             raise ValueError("Drift scale must be finite and nonnegative")
         if self.drift_scale > 0 and self.method != "gdi":
@@ -123,8 +112,6 @@ class Trainer:
             mismatch=self.config.method == "mismatch",
             drift_scale=self.config.drift_scale,
             neighbors=self.config.neighbors,
-            initializer=self.config.initializer,
-            spline_smoothing=self.config.spline_smoothing,
         )
 
     @property

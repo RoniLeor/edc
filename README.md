@@ -2,7 +2,7 @@
 
 **Elastic dual coupling for predictive coding with fewer settling steps.**
 
-[Method](#method) · [Results](#results) · [Gradient comparison](#gradient-comparison) · [Reproduce](#reproduce) · [Protocol](docs/protocol.md)
+[Method](#method) · [Results](#results) · [Gradient comparison](#gradient-comparison) · [Reproduce](#reproduce)
 
 GeoDual extends augmented Lagrangian predictive coding (PC-ALM) with retrieved
 multiplier initialization and a small, fading connection between mirrored layers.
@@ -87,7 +87,7 @@ across the three checkpoint means. BP against itself is 1.
 **Alignment improvements are modest in this controlled diagnostic.** For example,
 MNIST/T16 is 0.538 for PC-ALM versus 0.543 for elastic GDI. This measurement does
 not establish the cause of the much larger end-to-end accuracy gap and does not
-reproduce the paper's headline checkpoint/protocol. Read the [exact setup](docs/protocol.md).
+reproduce the paper's headline checkpoint/protocol.
 
 ![Per-layer alignment at 16 steps](assets/layers.png)
 
@@ -125,7 +125,7 @@ uv run python experiments/gradients.py --output results/gradients.json
 # Regenerate all PNG/SVG/PDF figures from the bundled published measurements.
 uv run python experiments/figures.py
 
-# Tests and static checks (76 passing tests for this release).
+# Tests and static checks.
 uv run pytest -q
 uv run ruff check src tests experiments/gradients.py experiments/figures.py
 uv run pyright
@@ -145,10 +145,9 @@ protocol. No convergence theorem, superior accuracy ceiling, out-of-distribution
 robustness or ImageNet improvement is established. Longer settling also extends
 the coupling phase; its integrated strength is not held constant across budgets.
 
-Optional CE, supervised contrastive, spline, drift-gating and learned-selector
+Optional CE, supervised contrastive, drift-gating and learned-selector
 experiments remain in the package but are **not used in the figures above**.
-Smoother multipliers and learned selection did not consistently improve accuracy
-in earlier pilots. The reported elastic results use the original MSE only.
+The reported elastic results use the original MSE only.
 
 Based on [Augmented Lagrangian Predictive Coding](https://arxiv.org/abs/2605.31022)
 by Jeffrey Seely and Julian Gould, and the MIT-licensed

@@ -55,9 +55,7 @@ class Calibration:
     config: Config
 
     def fill(self, *, weights: Weights, examples: Examples) -> State:
-        trainer: Trainer = Trainer(
-            config=replace(self.config, method="gdi", neighbors=4, initializer="average")
-        )
+        trainer: Trainer = Trainer(config=replace(self.config, method="gdi", neighbors=4))
         state: State = trainer.initialize()._replace(weights=weights)
         settle: Callable[..., Equilibrium] = jax.jit(trainer.settler)
         initial: Callable[..., jax.Array] = jax.jit(trainer.initial)
@@ -91,24 +89,21 @@ class Calibration:
         if len(examples.x) < required:
             raise ValueError("Insufficient disjoint calibration examples")
         state: State = self.fill(weights=weights, examples=examples)
-        control: Trainer = Trainer(config=replace(self.config, neighbors=16, initializer="average"))
+        control: Trainer = Trainer(config=replace(self.config, neighbors=16))
         oracle: Callable[..., jax.Array] = jax.jit(Adjoints(network=control.network))
         rows: dict[str, object] = {}
         name: str
         neighbors: int
-        initializer: str
-        for name, neighbors, initializer in (
-            ("zero", 4, "average"),
-            ("gdi4", 4, "average"),
-            ("gdi16", 16, "average"),
-            ("spline16", 16, "spline"),
+        for name, neighbors in (
+            ("zero", 4),
+            ("gdi4", 4),
+            ("gdi16", 16),
         ):
             trainer: Trainer = Trainer(
                 config=replace(
                     self.config,
                     method="alm" if name == "zero" else "gdi",
                     neighbors=neighbors,
-                    initializer=initializer,
                 )
             )
             total: np.ndarray = np.zeros(5, dtype=np.float64)

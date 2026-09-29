@@ -231,8 +231,6 @@ dev = [
     { name = "pytest-cov" },
     { name = "pyyaml" },
     { name = "ruff" },
-    { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "ty" },
 ]
 
@@ -254,7 +252,6 @@ dev = [
     { name = "pytest-cov", specifier = ">=6" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "ruff", specifier = ">=0.11" },
-    { name = "scipy", specifier = ">=1.17.1" },
     { name = "ty", specifier = ">=0.0.1" },
 ]
 

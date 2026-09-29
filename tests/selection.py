@@ -49,8 +49,6 @@ def test_candidates_preserve_retrieval_and_self_exclusion() -> None:
     np.testing.assert_array_equal(
         actual=memory.candidates(bank=bank, **(arguments | {"ids": jnp.asarray([3])})), desired=0
     )
-    with pytest.raises(ValueError, match="average retrieval"):
-        replace(memory, neighbors=6, initializer="spline").candidates(bank=bank, **arguments)
 
 
 def test_probe_merit_and_features_match_real_local_dynamics() -> None:
@@ -249,8 +247,6 @@ def test_selector_validation_and_cli(tmp_path: Path) -> None:
         Config(method="bp", selector="learned")
     with pytest.raises(ValueError, match="squared-error GDI"):
         Config(objective="ce", selector="learned")
-    with pytest.raises(ValueError, match="squared-error GDI"):
-        Config(initializer="spline", neighbors=16, selector="learned")
     with pytest.raises(ValueError, match="squared-error"):
         Selector(network=Network(), memory=Memory(), mode="bad")
     mocked: MagicMock

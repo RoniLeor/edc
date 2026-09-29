@@ -28,8 +28,6 @@ def main(argv: Sequence[str] | None = None) -> None:
     parser.add_argument("--drift-scale", type=float, default=0.0)
     parser.add_argument("--strength", type=float, default=0.5)
     parser.add_argument("--neighbors", type=int, default=4)
-    parser.add_argument("--initializer", choices=("average", "spline"), default="average")
-    parser.add_argument("--spline-smoothing", type=float, default=0.1)
     parser.add_argument("--selector", choices=("none", "residual", "learned"), default="none")
     parser.add_argument("--elastic", type=float, default=0.0)
     parser.add_argument("--data", type=Path, default=Path("data"))
