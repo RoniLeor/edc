@@ -1,0 +1,172 @@
+{
+  "config": {
+    "dataset": "mnist",
+    "method": "alm",
+    "seed": 1,
+    "width": 32,
+    "depth": 32,
+    "steps": 64,
+    "epochs": 10,
+    "batch": 64,
+    "rate": 0.23588,
+    "learning_rate": 0.001,
+    "capacity": 512,
+    "strength": 0.5,
+    "inputs": 784,
+    "outputs": 10,
+    "memory_age": 8,
+    "objective": "mse",
+    "drift_scale": 0.0,
+    "neighbors": 4,
+    "initializer": "average",
+    "spline_smoothing": 0.1,
+    "selector": "none",
+    "elastic": 0.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "validation": {
+        "accuracy": 0.787,
+        "mse": 0.2036812225341797
+      },
+      "training_seconds": 8.28501675001462
+    },
+    {
+      "epoch": 2,
+      "validation": {
+        "accuracy": 0.869,
+        "mse": 0.13837421417236329
+      },
+      "training_seconds": 16.42757258299389
+    },
+    {
+      "epoch": 3,
+      "validation": {
+        "accuracy": 0.8926,
+        "mse": 0.11018160247802734
+      },
+      "training_seconds": 24.63717883301433
+    },
+    {
+      "epoch": 4,
+      "validation": {
+        "accuracy": 0.9026,
+        "mse": 0.09430589447021484
+      },
+      "training_seconds": 32.583699416019954
+    },
+    {
+      "epoch": 5,
+      "validation": {
+        "accuracy": 0.9072,
+        "mse": 0.08462105255126953
+      },
+      "training_seconds": 40.60382945800666
+    },
+    {
+      "epoch": 6,
+      "validation": {
+        "accuracy": 0.913,
+        "mse": 0.07762556762695312
+      },
+      "training_seconds": 48.75841583299916
+    },
+    {
+      "epoch": 7,
+      "validation": {
+        "accuracy": 0.9172,
+        "mse": 0.0718881866455078
+      },
+      "training_seconds": 56.958020207996015
+    },
+    {
+      "epoch": 8,
+      "validation": {
+        "accuracy": 0.9224,
+        "mse": 0.06794168395996093
+      },
+      "training_seconds": 65.23085358299431
+    },
+    {
+      "epoch": 9,
+      "validation": {
+        "accuracy": 0.9246,
+        "mse": 0.06486039123535156
+      },
+      "training_seconds": 73.39049404097022
+    },
+    {
+      "epoch": 10,
+      "validation": {
+        "accuracy": 0.9284,
+        "mse": 0.06183214797973633
+      },
+      "training_seconds": 81.49505754097481
+    }
+  ],
+  "best_epoch": 10,
+  "validation_accuracy": 0.9284,
+  "train": {
+    "accuracy": 0.9406,
+    "mse": 0.053341302074085585
+  },
+  "test": {
+    "accuracy": 0.9375,
+    "mse": 0.05538075828552246
+  },
+  "gap": 0.0030999999999999917,
+  "training_seconds_including_compile": 81.49505754097481,
+  "first_step_seconds_including_compile": 0.1555727919912897,
+  "total_seconds": 83.39149533299496,
+  "bank_bytes": 2123780,
+  "optimizer_movement": 0.0,
+  "selector": null,
+  "selected_checkpoint_teacher_updates": 0,
+  "train_examples": 55000,
+  "validation_examples": 5000,
+  "test_examples": 10000,
+  "diagnostics": {
+    "layer_cosines": [
+      0.7021265029907227,
+      0.68785560131073,
+      0.6911050081253052,
+      0.6906220316886902,
+      0.685479462146759,
+      0.6554595828056335,
+      0.6834617257118225,
+      0.703220546245575,
+      0.7027884125709534,
+      0.7440289258956909,
+      0.7543659210205078,
+      0.7836211919784546,
+      0.7894393801689148,
+      0.8060124516487122,
+      0.8143715262413025,
+      0.8247411847114563,
+      0.8265446424484253,
+      0.8451488018035889,
+      0.859135091304779,
+      0.8582712411880493,
+      0.8650870323181152,
+      0.888599157333374,
+      0.9031903147697449,
+      0.9189618229866028,
+      0.9301811456680298,
+      0.9427165389060974,
+      0.9572281837463379,
+      0.9696475863456726,
+      0.9820808172225952,
+      0.9913618564605713,
+      0.9974933862686157,
+      0.9998903274536133
+    ],
+    "residual_rms": 0.0002373736642766744,
+    "stationarity_rms": 0.0003310990286991,
+    "initial_dual_rms": 0.0,
+    "isolated_lookup_seconds": 3.374999505467713e-05,
+    "lookup_benchmark": "dynamic_inputs"
+  },
+  "backend": "cpu",
+  "jax_version": "0.10.2"
+}

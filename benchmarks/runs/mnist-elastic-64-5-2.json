@@ -1,0 +1,132 @@
+{
+  "config": {
+    "dataset": "mnist",
+    "method": "gdi",
+    "seed": 2,
+    "width": 32,
+    "depth": 32,
+    "steps": 64,
+    "epochs": 5,
+    "batch": 64,
+    "rate": 0.23588,
+    "learning_rate": 0.001,
+    "capacity": 512,
+    "strength": 0.5,
+    "inputs": 784,
+    "outputs": 10,
+    "memory_age": 8,
+    "objective": "mse",
+    "drift_scale": 0.0,
+    "neighbors": 4,
+    "initializer": "average",
+    "spline_smoothing": 0.1,
+    "selector": "none",
+    "elastic": 0.05
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "validation": {
+        "accuracy": 0.8332,
+        "mse": 0.18740491638183593
+      },
+      "training_seconds": 8.5404707500129
+    },
+    {
+      "epoch": 2,
+      "validation": {
+        "accuracy": 0.8808,
+        "mse": 0.13502779541015625
+      },
+      "training_seconds": 16.767378083022777
+    },
+    {
+      "epoch": 3,
+      "validation": {
+        "accuracy": 0.8986,
+        "mse": 0.1099989242553711
+      },
+      "training_seconds": 25.01309741701698
+    },
+    {
+      "epoch": 4,
+      "validation": {
+        "accuracy": 0.9096,
+        "mse": 0.09477965393066407
+      },
+      "training_seconds": 33.206338916992536
+    },
+    {
+      "epoch": 5,
+      "validation": {
+        "accuracy": 0.9146,
+        "mse": 0.08438412628173828
+      },
+      "training_seconds": 41.381842500006314
+    }
+  ],
+  "best_epoch": 5,
+  "validation_accuracy": 0.9146,
+  "train": {
+    "accuracy": 0.9258,
+    "mse": 0.0788261885209517
+  },
+  "test": {
+    "accuracy": 0.9259,
+    "mse": 0.07840398979187012
+  },
+  "gap": -9.999999999998899e-05,
+  "training_seconds_including_compile": 41.381842500006314,
+  "first_step_seconds_including_compile": 0.21055966601124965,
+  "total_seconds": 43.244957708986476,
+  "bank_bytes": 2123780,
+  "optimizer_movement": 0.0,
+  "selector": null,
+  "selected_checkpoint_teacher_updates": 0,
+  "train_examples": 55000,
+  "validation_examples": 5000,
+  "test_examples": 10000,
+  "diagnostics": {
+    "layer_cosines": [
+      0.8386082649230957,
+      0.8084918260574341,
+      0.8018686771392822,
+      0.7837294340133667,
+      0.7616620063781738,
+      0.7609366774559021,
+      0.7445107102394104,
+      0.7452492713928223,
+      0.7579373717308044,
+      0.7543129920959473,
+      0.7719411849975586,
+      0.7769818902015686,
+      0.8095264434814453,
+      0.8275858163833618,
+      0.8467795848846436,
+      0.8651410341262817,
+      0.8748922944068909,
+      0.8955137729644775,
+      0.9030572772026062,
+      0.9111219644546509,
+      0.9222263693809509,
+      0.9352308511734009,
+      0.9501487016677856,
+      0.962020754814148,
+      0.967100977897644,
+      0.9723993539810181,
+      0.9807547330856323,
+      0.9876959919929504,
+      0.992997944355011,
+      0.9968366622924805,
+      0.999158501625061,
+      0.9999573230743408
+    ],
+    "residual_rms": 0.0002336009929422289,
+    "stationarity_rms": 0.00028651778120547533,
+    "initial_dual_rms": 0.0015972043620422482,
+    "isolated_lookup_seconds": 0.000308374990709126,
+    "lookup_benchmark": "dynamic_inputs"
+  },
+  "backend": "cpu",
+  "jax_version": "0.10.2"
+}

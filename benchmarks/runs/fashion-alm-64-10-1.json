@@ -1,0 +1,172 @@
+{
+  "config": {
+    "dataset": "fashion",
+    "method": "alm",
+    "seed": 1,
+    "width": 32,
+    "depth": 32,
+    "steps": 64,
+    "epochs": 10,
+    "batch": 64,
+    "rate": 0.23588,
+    "learning_rate": 0.001,
+    "capacity": 512,
+    "strength": 0.5,
+    "inputs": 784,
+    "outputs": 10,
+    "memory_age": 8,
+    "objective": "mse",
+    "drift_scale": 0.0,
+    "neighbors": 4,
+    "initializer": "average",
+    "spline_smoothing": 0.1,
+    "selector": "none",
+    "elastic": 0.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "validation": {
+        "accuracy": 0.7574,
+        "mse": 0.1935007110595703
+      },
+      "training_seconds": 8.38624420799897
+    },
+    {
+      "epoch": 2,
+      "validation": {
+        "accuracy": 0.794,
+        "mse": 0.16412738952636718
+      },
+      "training_seconds": 16.60029329097597
+    },
+    {
+      "epoch": 3,
+      "validation": {
+        "accuracy": 0.8084,
+        "mse": 0.14968743591308595
+      },
+      "training_seconds": 24.605004040990025
+    },
+    {
+      "epoch": 4,
+      "validation": {
+        "accuracy": 0.821,
+        "mse": 0.14020470886230468
+      },
+      "training_seconds": 32.59012179097044
+    },
+    {
+      "epoch": 5,
+      "validation": {
+        "accuracy": 0.8276,
+        "mse": 0.13358653106689453
+      },
+      "training_seconds": 40.74897229098133
+    },
+    {
+      "epoch": 6,
+      "validation": {
+        "accuracy": 0.8334,
+        "mse": 0.12828997802734374
+      },
+      "training_seconds": 48.91277008297038
+    },
+    {
+      "epoch": 7,
+      "validation": {
+        "accuracy": 0.839,
+        "mse": 0.12408124084472656
+      },
+      "training_seconds": 57.01664737399551
+    },
+    {
+      "epoch": 8,
+      "validation": {
+        "accuracy": 0.8432,
+        "mse": 0.12046063690185548
+      },
+      "training_seconds": 64.9807839159912
+    },
+    {
+      "epoch": 9,
+      "validation": {
+        "accuracy": 0.8452,
+        "mse": 0.1180721923828125
+      },
+      "training_seconds": 73.08065145800356
+    },
+    {
+      "epoch": 10,
+      "validation": {
+        "accuracy": 0.8468,
+        "mse": 0.11583825988769532
+      },
+      "training_seconds": 81.24864700000035
+    }
+  ],
+  "best_epoch": 10,
+  "validation_accuracy": 0.8468,
+  "train": {
+    "accuracy": 0.8612,
+    "mse": 0.10723674149946733
+  },
+  "test": {
+    "accuracy": 0.8444,
+    "mse": 0.1176320411682129
+  },
+  "gap": 0.016799999999999926,
+  "training_seconds_including_compile": 81.24864700000035,
+  "first_step_seconds_including_compile": 0.16081191698322073,
+  "total_seconds": 83.127308583993,
+  "bank_bytes": 2123780,
+  "optimizer_movement": 0.0,
+  "selector": null,
+  "selected_checkpoint_teacher_updates": 0,
+  "train_examples": 55000,
+  "validation_examples": 5000,
+  "test_examples": 10000,
+  "diagnostics": {
+    "layer_cosines": [
+      0.6785455942153931,
+      0.657368540763855,
+      0.6669020652770996,
+      0.6531228423118591,
+      0.6679343581199646,
+      0.7116854786872864,
+      0.7132903933525085,
+      0.7013335824012756,
+      0.7090058326721191,
+      0.7423943281173706,
+      0.7437365055084229,
+      0.7676074504852295,
+      0.7800866961479187,
+      0.8043960332870483,
+      0.8033451437950134,
+      0.7993878722190857,
+      0.8075392246246338,
+      0.8051402568817139,
+      0.8130401372909546,
+      0.8317739367485046,
+      0.8540629744529724,
+      0.8657379150390625,
+      0.8635385632514954,
+      0.8868631720542908,
+      0.9114775657653809,
+      0.9269152879714966,
+      0.9387518763542175,
+      0.9519296288490295,
+      0.9680724143981934,
+      0.9786061644554138,
+      0.9888188242912292,
+      0.9984536170959473
+    ],
+    "residual_rms": 0.00039342130185104907,
+    "stationarity_rms": 0.0006337895756587386,
+    "initial_dual_rms": 0.0,
+    "isolated_lookup_seconds": 3.137500607408583e-05,
+    "lookup_benchmark": "dynamic_inputs"
+  },
+  "backend": "cpu",
+  "jax_version": "0.10.2"
+}

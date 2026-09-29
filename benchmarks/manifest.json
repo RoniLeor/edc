@@ -1,0 +1,384 @@
+{
+  "runs": [
+    {
+      "path": "benchmarks/runs/fashion-elastic-16-10-0.json",
+      "sha256": "59a1362e59d77257de6325f63a6d22535abfe972c66f0bae6b63ea5e639e81e6"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-16-10-1.json",
+      "sha256": "73be4371c55861d0f1f4b1db52e6e256c8df0aafab8428d881496b9db14fb0cb"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-16-10-2.json",
+      "sha256": "4727df851461ac2f1478c9b386f9341dbef0909b0c08b70dbc09170e7fcd9319"
+    },
+    {
+      "path": "benchmarks/runs/fashion-gdi-16-10-0.json",
+      "sha256": "fe6ca0fa5a07add8c57fbf25a0282e3258583cd95ba747b78e509c326b585b94"
+    },
+    {
+      "path": "benchmarks/runs/fashion-gdi-16-10-1.json",
+      "sha256": "7bd982727e15ff83fe630c4393cb780dff05f38c0c0cff2adb17c2f592fbf688"
+    },
+    {
+      "path": "benchmarks/runs/fashion-gdi-16-10-2.json",
+      "sha256": "3c3605d13e2cc9b352f3890eadf95d9b7f80dbd2ffcc54b189d914163db04d25"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-16-10-0.json",
+      "sha256": "c60088f76572659e2114668feba231487729c062cc0ddc8643af1bdffd0127ed"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-16-10-1.json",
+      "sha256": "3bcbd7d6c0367e3b52b2a03b619b770197de9574bd5913b6cdfc596253ceb896"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-16-10-2.json",
+      "sha256": "9a66cc70952f0636efdc92869b8dce028cc79e56b2d9288db96ba5cbd20bed0c"
+    },
+    {
+      "path": "benchmarks/runs/mnist-gdi-16-10-0.json",
+      "sha256": "fb88b5401f11c599b4ba50822ed6bb2d73071010662c846b825f66fb8cd7f26f"
+    },
+    {
+      "path": "benchmarks/runs/mnist-gdi-16-10-1.json",
+      "sha256": "432f95e7be02a1a73cdbcaea25a6692ad4490b76a9aacd36529004984e4a2af2"
+    },
+    {
+      "path": "benchmarks/runs/mnist-gdi-16-10-2.json",
+      "sha256": "72f1f6c5340065c610e10c3abd3dd314dbc5875b3a4478c2eeb118c093afe2da"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-16-5-0.json",
+      "sha256": "a3bdc029a7d3ec2ac6dfc863910a34f854ef6433b89421c6d40b80c3d674ddde"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-16-5-1.json",
+      "sha256": "fa250ecce53ec1279a0b8cb04909a8a65eabc87e9060df9504d3e4e1e0ffed3a"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-16-5-2.json",
+      "sha256": "618a3577eb916820ceeb455da8141c41dc132a9ebb5ef4e5063dcf4899d8aa90"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-32-5-0.json",
+      "sha256": "dec7c0d9c4c4684cb1fc5b0514ba4b55df3041b2953a4fa7a74b45ca4bf5017a"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-32-5-1.json",
+      "sha256": "ca3b468fa42610c163c89157a475450dd3bec62f8bdc271217bd3dcfa7835580"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-32-5-2.json",
+      "sha256": "2c5a132ccba15b4cc65049d7fa0f568635d114a220d955afbcf60e0742697024"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-64-5-0.json",
+      "sha256": "9bafcf04f7e5819e671cf4f6f0dbb4676945532007e563266b9f1571997d94fb"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-64-5-1.json",
+      "sha256": "af5468909f16f51837230a4e907b940254c602d798db4e4de43ca8c923be46b0"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-64-5-2.json",
+      "sha256": "00765b9e0e48c714134bb6a161d26b6a56440635c5272ef9aca9f92749d87f77"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-16-5-0.json",
+      "sha256": "ae0c434b259cb0323e6c81fc5c5af61825fb3f8b7284bd91fc805576a82cd20e"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-16-5-1.json",
+      "sha256": "7f1596aec882737b58ea8417b346d04c4ee96f00fc78601823783953273ec9b6"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-16-5-2.json",
+      "sha256": "5ac9417433c8a642f2ff4b51a84d25fb3add473a479551415cbb551b7c69424d"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-32-5-0.json",
+      "sha256": "fe1304bf56c3a905b745c0e04dae53a5b792ec19847c42caa991261d0a511213"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-32-5-1.json",
+      "sha256": "00c79f4cd125ac80e6090dbf01364e7091d771135acf0480733a615efa3ef94e"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-32-5-2.json",
+      "sha256": "c1d60dede7893b92b3dd84e67d63189e6f67a099c3797aa1176a2faa92044b00"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-64-5-0.json",
+      "sha256": "d6740f6f8fb2da9b0308edabd1af90a9914d02b36b47f430df324d7f00638aea"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-64-5-1.json",
+      "sha256": "5bc1737d7696da3a946202b3085f1bd059f7ecceab18aaecc28b1591b24d19a0"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-64-5-2.json",
+      "sha256": "492d620aff1fbc7512ef8f1e627a7f8442fc3688f7e7c027a6465950e77f0059"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-16-5-0.json",
+      "sha256": "f20e233ba6cddc4100ac551a63107538b021162c26608d3a172d9a30031b71f2"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-16-5-1.json",
+      "sha256": "519d4fb9b800c2492470529a1e29c739c19a6da8c6b44cfd6bf0404c54d24338"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-16-5-2.json",
+      "sha256": "61fa20343abe517f1e09bd3c8fae8d6acc8666e097f2c285337342081b3060bb"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-32-5-0.json",
+      "sha256": "d73c45c31baef005883e43e64747af065ba4876bb6aa8fc006549e5af58aa7fb"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-32-5-1.json",
+      "sha256": "10f344acdca5a02769bf850e5b18b013bee1239ea4e6c32bd714d04fb27779d9"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-32-5-2.json",
+      "sha256": "67e7d7fab8482105bf6993f7a9ab6c9eb0820d8e8a55f73a9bd1fbf090c28d0f"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-64-5-0.json",
+      "sha256": "2d3fd0723420a8d1a6cf8d21606eb868524569768de61512d2fd86ed7a3f5ecd"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-64-5-1.json",
+      "sha256": "3b3c507c72593b91e9183d59ee995acd94bca891eb5254281dd2ef5fd3f8652f"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-64-5-2.json",
+      "sha256": "4ec8f399cd0a1592b950a197685c053a8f52051d81c52c945e9e2de62c03f4a1"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-16-5-0.json",
+      "sha256": "17f2dd0f2ee2215c50a4227430f9e73976ea22331c12c8c7f02aafd241813578"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-16-5-1.json",
+      "sha256": "7f6ed130902d03152b4db18bf769e93e9b16af0364fd409435dcba23c07bdb8c"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-16-5-2.json",
+      "sha256": "69232390c8f6ff38ce6fda3c6acf8ff4b596f4e800f68b6e3ce40f5782e289bb"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-32-5-0.json",
+      "sha256": "f1c654df08f4b90b3b4a0e89d5aac64f44f0438201624aa892d4be317b92988b"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-32-5-1.json",
+      "sha256": "752a2b3982bcbfba36e3438764555935752aaee6debf49dc7f6f46421f09bf5d"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-32-5-2.json",
+      "sha256": "9bb5726e2453b99ce84a3ce40416d0824c6d1011e7d058212fa874a53a936bf4"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-64-5-0.json",
+      "sha256": "05ffc121057d7d7454450c562c5277d566ee6137511f1a425cad01af5527ae81"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-64-5-1.json",
+      "sha256": "fa102ec10bad62e5a06829541b3bb0a8448b30532cb62577b8e6f32949b9a4fb"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-64-5-2.json",
+      "sha256": "1a9b4e7d906774807a0d5bd6bef851d274271562089650d2f757deefdbb90763"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-16-10-0.json",
+      "sha256": "bf808b7b627988c3de7bfe3accf761f719aa6c54bca17c8a60b9a2b9c3ae5584"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-16-10-1.json",
+      "sha256": "3628e22ee6245a3f512bb200b48f21f6f60319b71230910b3cd7947daa908ff6"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-16-10-2.json",
+      "sha256": "5773afe306047aaec2a9fabc1cad3b41784d8e144c4ac949e7dbd051e42c1e6a"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-32-10-0.json",
+      "sha256": "02fa49686298a96a043e8e2902dd331ea74701f4db338d2d782ed42a66bce90b"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-32-10-1.json",
+      "sha256": "c201927079d83ecaa445882a4bb7e507444ab3fe2ab0415670f6629cfe5e781c"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-32-10-2.json",
+      "sha256": "18fdef87bb235fbb657db1c3f931872089cd5c6bc88bf1ef703e3ddfb120310f"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-64-10-0.json",
+      "sha256": "9c90c793837baca28bb865178cdf780ef375f4157c09b84fecb9a687d8e71cbc"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-64-10-1.json",
+      "sha256": "f7f234e4d62efd3644e97fe43bdfc0466794ec213689dc13a534ffd49d505152"
+    },
+    {
+      "path": "benchmarks/runs/fashion-alm-64-10-2.json",
+      "sha256": "b526440604b5d2e7401c30d4717dae239492bbd992fe89b90e01ebaac87deb12"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-32-10-0.json",
+      "sha256": "98d69828efc2b57e4c4c79ca36f4801b21f3ae710c6f80e9ba9dbdad25535d8f"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-32-10-1.json",
+      "sha256": "fc7149330742caf2c7b647e208eef32985e6be477d202bbc35a8d1d4cecd8ff6"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-32-10-2.json",
+      "sha256": "92cd7049e698227336f884967590840be7673754b07a4eee6df245cd70f13fb5"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-64-10-0.json",
+      "sha256": "a6a21bdd10755d7252b2a39068776f9afdc1a74bcbe0ab68524790fae6d47a87"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-64-10-1.json",
+      "sha256": "eaab43556f3fa189a191d00faa554245386072d4d0ba7eb6ef2e23bea4cf4b50"
+    },
+    {
+      "path": "benchmarks/runs/fashion-elastic-64-10-2.json",
+      "sha256": "353204598fbf431e80e6ba7d25ea0c49b9dcc58092e8fe98398b820ee2e8ce9d"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-16-10-0.json",
+      "sha256": "cb66a17065a243fdcd057237d2892e12fd02b24969c985170cf81be6aed28f89"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-16-10-1.json",
+      "sha256": "59e798df4c04f82892b9ef68603aceeec3deb5a8036e50f60d3409923c723513"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-16-10-2.json",
+      "sha256": "229c8fddaf1ca8d3c22f38b3ab9a88f812ea25980dff5b14d9fe933e68f20f36"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-32-10-0.json",
+      "sha256": "bd0d64a8fa48332bbbab903ebb84f4a615e8772329c8bf6d673dfe0607779c86"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-32-10-1.json",
+      "sha256": "12394f820fe568a00087008374d044bb737bca0ec321eb2c28de78c3616ee125"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-32-10-2.json",
+      "sha256": "b92850c7f3d326247fbba5c6761f27559c2c96736f26bb735fb4ac6461a84a5c"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-64-10-0.json",
+      "sha256": "3baab720a8f7af20b1b54330e30f494a89dbb52636ae3d2f2c05f633777caeb5"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-64-10-1.json",
+      "sha256": "941f2e4f838091ac73ec11aa91b5f6a10e2b3ab2a31a52afc94b8523e76ac409"
+    },
+    {
+      "path": "benchmarks/runs/mnist-alm-64-10-2.json",
+      "sha256": "a504decf0d53198b5bd698026be2c105c1db18bd3340553071d52aa9428de9ac"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-32-10-0.json",
+      "sha256": "fd4ff1b3d5add26c2edeb02884e8b6615421b8fc69ae325d3eb6642b4a4feae6"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-32-10-1.json",
+      "sha256": "c27cc06016357d4306c309b7102123e54f6a494dee3e21dbe6075694d8a89d6c"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-32-10-2.json",
+      "sha256": "50ca848eca33f4e7ac60f7f9a766b6c47f33d66d06cd3e0d9edcc59968a66799"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-64-10-0.json",
+      "sha256": "beead944c55877878093dd4f4247f4a71e1d40a7c389ac71818d1cddef1cb0a3"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-64-10-1.json",
+      "sha256": "65a9df226364bbea3e79f4df8a03dcc209f5b61ba99883409c2c559785d171d0"
+    },
+    {
+      "path": "benchmarks/runs/mnist-elastic-64-10-2.json",
+      "sha256": "7281f620572f58e7b20b79804ac943b982eac425aa178f1ea64748280776e43d"
+    }
+  ],
+  "references": [
+    {
+      "dataset": "mnist",
+      "seed": 0,
+      "weights": "benchmarks/reference/mnist-0.npz",
+      "sha256": "19cd99f5ee03496af835f09ba60ffb5c5c4727e88a57c18a1b60aca540419cfb",
+      "selected_epoch": 10,
+      "training_epochs": 10,
+      "reference_method": "bp",
+      "summary": "benchmarks/reference/mnist-0.json",
+      "summary_sha256": "7aa86a8437e788f4c2d67f06fa47c7778fa9b37a49ce13871a0c55aa2601ba33"
+    },
+    {
+      "dataset": "mnist",
+      "seed": 1,
+      "weights": "benchmarks/reference/mnist-1.npz",
+      "sha256": "f52b5d09469968b44c3c1d15026d86855973ac338ad9458bce2cee322c57e10d",
+      "selected_epoch": 10,
+      "training_epochs": 10,
+      "reference_method": "bp",
+      "summary": "benchmarks/reference/mnist-1.json",
+      "summary_sha256": "2d064f41f436310809bcd0026a9c78a3705a4531b61dab282088a339bd6e4d3a"
+    },
+    {
+      "dataset": "mnist",
+      "seed": 2,
+      "weights": "benchmarks/reference/mnist-2.npz",
+      "sha256": "41a7c3e9a023d02d475babc1d766f6499a2e37f94c9736c36bdd08b942ff7df9",
+      "selected_epoch": 10,
+      "training_epochs": 10,
+      "reference_method": "bp",
+      "summary": "benchmarks/reference/mnist-2.json",
+      "summary_sha256": "518cd5284442450784393f4e5ed2969cb8e03329868f6713dfe49d0e619b024a"
+    },
+    {
+      "dataset": "fashion",
+      "seed": 0,
+      "weights": "benchmarks/reference/fashion-0.npz",
+      "sha256": "caebe7d71e3ca147f29ece907e37e8994f404ff98735d08dfa6a99a58cebdb91",
+      "selected_epoch": 10,
+      "training_epochs": 10,
+      "reference_method": "bp",
+      "summary": "benchmarks/reference/fashion-0.json",
+      "summary_sha256": "a22081fe30d3c83076997867a63321b2996f52238fc5f5888c948f049b513db3"
+    },
+    {
+      "dataset": "fashion",
+      "seed": 1,
+      "weights": "benchmarks/reference/fashion-1.npz",
+      "sha256": "87c9ecb117046e4d7a1672d6aa5cca92b6c0902f6ddfc8f9c30fe6906687eee6",
+      "selected_epoch": 10,
+      "training_epochs": 10,
+      "reference_method": "bp",
+      "summary": "benchmarks/reference/fashion-1.json",
+      "summary_sha256": "ebad9ea40900de689110ca7eafe2872ed406e53b11598b3d386424f86c221a5f"
+    },
+    {
+      "dataset": "fashion",
+      "seed": 2,
+      "weights": "benchmarks/reference/fashion-2.npz",
+      "sha256": "735743a1b5bd513689f2e11b56907271640055ea1427824b82f13ed84cdbb06e",
+      "selected_epoch": 9,
+      "training_epochs": 10,
+      "reference_method": "bp",
+      "summary": "benchmarks/reference/fashion-2.json",
+      "summary_sha256": "d93da8bc74ecde93785460d4bdd6ba5d73eb84dba6f5ea5f0ab4d0638861a3a0"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+[project]
+name = "geodual"
+version = "0.1.0"
+description = "Geometric Dual Initialization for augmented Lagrangian predictive coding"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "huggingface-hub>=0.35",
+    "jax>=0.4.35",
+    "matplotlib>=3.11.2",
+    "numpy>=1.26",
+    "optax>=0.2.4",
+    "pillow>=11",
+    "pyarrow>=19",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=6",
+    "ruff>=0.11",
+    "pyright>=1.1.400",
+    "ty>=0.0.1",
+    "pyyaml>=6.0.3",
+    "scipy>=1.17.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+geodual = "geodual.cli:main"
+geodual-report = "geodual.report:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["*.py"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "TID252"]
+
+[tool.pyright]
+include = ["src", "tests"]
+pythonVersion = "3.11"
+typeCheckingMode = "basic"

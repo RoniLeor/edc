@@ -1,0 +1,172 @@
+{
+  "config": {
+    "dataset": "mnist",
+    "method": "gdi",
+    "seed": 1,
+    "width": 32,
+    "depth": 32,
+    "steps": 64,
+    "epochs": 10,
+    "batch": 64,
+    "rate": 0.23588,
+    "learning_rate": 0.001,
+    "capacity": 512,
+    "strength": 0.5,
+    "inputs": 784,
+    "outputs": 10,
+    "memory_age": 8,
+    "objective": "mse",
+    "drift_scale": 0.0,
+    "neighbors": 4,
+    "initializer": "average",
+    "spline_smoothing": 0.1,
+    "selector": "none",
+    "elastic": 0.05
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "validation": {
+        "accuracy": 0.803,
+        "mse": 0.19036270446777342
+      },
+      "training_seconds": 8.64679833300761
+    },
+    {
+      "epoch": 2,
+      "validation": {
+        "accuracy": 0.8742,
+        "mse": 0.1307908676147461
+      },
+      "training_seconds": 16.83936529100174
+    },
+    {
+      "epoch": 3,
+      "validation": {
+        "accuracy": 0.8928,
+        "mse": 0.1068192626953125
+      },
+      "training_seconds": 24.946777333010687
+    },
+    {
+      "epoch": 4,
+      "validation": {
+        "accuracy": 0.9,
+        "mse": 0.09294065399169922
+      },
+      "training_seconds": 33.19104929201421
+    },
+    {
+      "epoch": 5,
+      "validation": {
+        "accuracy": 0.9084,
+        "mse": 0.08426724090576172
+      },
+      "training_seconds": 41.479879167018225
+    },
+    {
+      "epoch": 6,
+      "validation": {
+        "accuracy": 0.9108,
+        "mse": 0.0780427505493164
+      },
+      "training_seconds": 49.67414733301848
+    },
+    {
+      "epoch": 7,
+      "validation": {
+        "accuracy": 0.914,
+        "mse": 0.07398723754882812
+      },
+      "training_seconds": 57.72317412501434
+    },
+    {
+      "epoch": 8,
+      "validation": {
+        "accuracy": 0.9176,
+        "mse": 0.07004776458740235
+      },
+      "training_seconds": 65.94360445899656
+    },
+    {
+      "epoch": 9,
+      "validation": {
+        "accuracy": 0.9178,
+        "mse": 0.0679034194946289
+      },
+      "training_seconds": 74.21775745897321
+    },
+    {
+      "epoch": 10,
+      "validation": {
+        "accuracy": 0.9206,
+        "mse": 0.06524793472290039
+      },
+      "training_seconds": 82.50201404298423
+    }
+  ],
+  "best_epoch": 10,
+  "validation_accuracy": 0.9206,
+  "train": {
+    "accuracy": 0.9369636363636363,
+    "mse": 0.0550786640514027
+  },
+  "test": {
+    "accuracy": 0.9331,
+    "mse": 0.056915552139282226
+  },
+  "gap": 0.0038636363636362914,
+  "training_seconds_including_compile": 82.50201404298423,
+  "first_step_seconds_including_compile": 0.2359686660056468,
+  "total_seconds": 84.40782379201846,
+  "bank_bytes": 2123780,
+  "optimizer_movement": 0.0,
+  "selector": null,
+  "selected_checkpoint_teacher_updates": 0,
+  "train_examples": 55000,
+  "validation_examples": 5000,
+  "test_examples": 10000,
+  "diagnostics": {
+    "layer_cosines": [
+      0.7789474129676819,
+      0.845122754573822,
+      0.8346518278121948,
+      0.8145363330841064,
+      0.8178538680076599,
+      0.8110785484313965,
+      0.8160914778709412,
+      0.8255671262741089,
+      0.8214572668075562,
+      0.8249080777168274,
+      0.826227605342865,
+      0.8525111079216003,
+      0.8587263822555542,
+      0.8732748031616211,
+      0.8866965174674988,
+      0.8958280682563782,
+      0.8973145484924316,
+      0.9051162600517273,
+      0.918489933013916,
+      0.9283183813095093,
+      0.9371573328971863,
+      0.9505538940429688,
+      0.957940399646759,
+      0.9643940925598145,
+      0.971613883972168,
+      0.9777457118034363,
+      0.9835148453712463,
+      0.9881160259246826,
+      0.9927480220794678,
+      0.9965404272079468,
+      0.9988457560539246,
+      0.9999662041664124
+    ],
+    "residual_rms": 0.0002026232541538775,
+    "stationarity_rms": 0.0002877446240745485,
+    "initial_dual_rms": 0.0015222860965877771,
+    "isolated_lookup_seconds": 0.00030449999030679464,
+    "lookup_benchmark": "dynamic_inputs"
+  },
+  "backend": "cpu",
+  "jax_version": "0.10.2"
+}

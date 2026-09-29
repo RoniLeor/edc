@@ -1,0 +1,172 @@
+{
+  "config": {
+    "dataset": "mnist",
+    "method": "alm",
+    "seed": 0,
+    "width": 32,
+    "depth": 32,
+    "steps": 64,
+    "epochs": 10,
+    "batch": 64,
+    "rate": 0.23588,
+    "learning_rate": 0.001,
+    "capacity": 512,
+    "strength": 0.5,
+    "inputs": 784,
+    "outputs": 10,
+    "memory_age": 8,
+    "objective": "mse",
+    "drift_scale": 0.0,
+    "neighbors": 4,
+    "initializer": "average",
+    "spline_smoothing": 0.1,
+    "selector": "none",
+    "elastic": 0.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "validation": {
+        "accuracy": 0.8354,
+        "mse": 0.18368008422851562
+      },
+      "training_seconds": 8.2547178339737
+    },
+    {
+      "epoch": 2,
+      "validation": {
+        "accuracy": 0.8808,
+        "mse": 0.12578647766113282
+      },
+      "training_seconds": 16.1587552089768
+    },
+    {
+      "epoch": 3,
+      "validation": {
+        "accuracy": 0.8962,
+        "mse": 0.10279920806884765
+      },
+      "training_seconds": 24.269309167953907
+    },
+    {
+      "epoch": 4,
+      "validation": {
+        "accuracy": 0.9048,
+        "mse": 0.09006071166992187
+      },
+      "training_seconds": 32.41969491794589
+    },
+    {
+      "epoch": 5,
+      "validation": {
+        "accuracy": 0.912,
+        "mse": 0.08141427154541016
+      },
+      "training_seconds": 40.61963762593223
+    },
+    {
+      "epoch": 6,
+      "validation": {
+        "accuracy": 0.9138,
+        "mse": 0.07502835235595703
+      },
+      "training_seconds": 48.51131370893563
+    },
+    {
+      "epoch": 7,
+      "validation": {
+        "accuracy": 0.9198,
+        "mse": 0.07038459320068359
+      },
+      "training_seconds": 56.5083870429371
+    },
+    {
+      "epoch": 8,
+      "validation": {
+        "accuracy": 0.9232,
+        "mse": 0.0664900390625
+      },
+      "training_seconds": 64.65950266792788
+    },
+    {
+      "epoch": 9,
+      "validation": {
+        "accuracy": 0.926,
+        "mse": 0.06350366134643555
+      },
+      "training_seconds": 72.8598305429332
+    },
+    {
+      "epoch": 10,
+      "validation": {
+        "accuracy": 0.9286,
+        "mse": 0.06103103561401367
+      },
+      "training_seconds": 80.8678479589289
+    }
+  ],
+  "best_epoch": 10,
+  "validation_accuracy": 0.9286,
+  "train": {
+    "accuracy": 0.9401636363636363,
+    "mse": 0.05454655054265803
+  },
+  "test": {
+    "accuracy": 0.9369,
+    "mse": 0.05566936588287354
+  },
+  "gap": 0.0032636363636363575,
+  "training_seconds_including_compile": 80.8678479589289,
+  "first_step_seconds_including_compile": 0.15400062498520128,
+  "total_seconds": 82.65148854200379,
+  "bank_bytes": 2123780,
+  "optimizer_movement": 0.0,
+  "selector": null,
+  "selected_checkpoint_teacher_updates": 0,
+  "train_examples": 55000,
+  "validation_examples": 5000,
+  "test_examples": 10000,
+  "diagnostics": {
+    "layer_cosines": [
+      0.751526415348053,
+      0.7240331172943115,
+      0.719821035861969,
+      0.7245901226997375,
+      0.7220582962036133,
+      0.6993553042411804,
+      0.6869901418685913,
+      0.7026339769363403,
+      0.7258579730987549,
+      0.7573780417442322,
+      0.7637491226196289,
+      0.7682659029960632,
+      0.771155834197998,
+      0.7889519333839417,
+      0.8108615875244141,
+      0.7977502942085266,
+      0.8067052364349365,
+      0.8151952624320984,
+      0.826865017414093,
+      0.8496845364570618,
+      0.86429762840271,
+      0.8782798051834106,
+      0.8944040536880493,
+      0.915431022644043,
+      0.9318558573722839,
+      0.9397963881492615,
+      0.9502734541893005,
+      0.9663267135620117,
+      0.9809662103652954,
+      0.9903973937034607,
+      0.9972176551818848,
+      0.9998337626457214
+    ],
+    "residual_rms": 0.00024431507335975766,
+    "stationarity_rms": 0.0003461938176769763,
+    "initial_dual_rms": 0.0,
+    "isolated_lookup_seconds": 3.341599949635565e-05,
+    "lookup_benchmark": "dynamic_inputs"
+  },
+  "backend": "cpu",
+  "jax_version": "0.10.2"
+}

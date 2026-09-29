@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+data/
+*.egg-info/
+results/
+.ty_cache/
+.DS_Store
+.env
+.env.*
+# Local discussion and historical experiment drivers are not part of this release.
+docs/proposal.txt
+RESULTS.md
+experiments/*
+!experiments/__init__.py
+!experiments/compare.sh
+!experiments/gradients.py
+!experiments/figures.py

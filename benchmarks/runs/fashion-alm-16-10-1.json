@@ -1,0 +1,172 @@
+{
+  "config": {
+    "dataset": "fashion",
+    "method": "alm",
+    "seed": 1,
+    "width": 32,
+    "depth": 32,
+    "steps": 16,
+    "epochs": 10,
+    "batch": 64,
+    "rate": 0.23588,
+    "learning_rate": 0.001,
+    "capacity": 512,
+    "strength": 0.5,
+    "inputs": 784,
+    "outputs": 10,
+    "memory_age": 8,
+    "objective": "mse",
+    "drift_scale": 0.0,
+    "neighbors": 4,
+    "initializer": "average",
+    "spline_smoothing": 0.1,
+    "selector": "none",
+    "elastic": 0.0
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "validation": {
+        "accuracy": 0.6056,
+        "mse": 0.29731248779296876
+      },
+      "training_seconds": 2.4325684159994125
+    },
+    {
+      "epoch": 2,
+      "validation": {
+        "accuracy": 0.6648,
+        "mse": 0.25733770446777343
+      },
+      "training_seconds": 4.624795248993905
+    },
+    {
+      "epoch": 3,
+      "validation": {
+        "accuracy": 0.6896,
+        "mse": 0.23970570678710937
+      },
+      "training_seconds": 6.810255290009081
+    },
+    {
+      "epoch": 4,
+      "validation": {
+        "accuracy": 0.7058,
+        "mse": 0.22814212341308593
+      },
+      "training_seconds": 9.017409414984286
+    },
+    {
+      "epoch": 5,
+      "validation": {
+        "accuracy": 0.72,
+        "mse": 0.21939140014648437
+      },
+      "training_seconds": 11.253270080982475
+    },
+    {
+      "epoch": 6,
+      "validation": {
+        "accuracy": 0.7282,
+        "mse": 0.21241097106933593
+      },
+      "training_seconds": 13.500872039992828
+    },
+    {
+      "epoch": 7,
+      "validation": {
+        "accuracy": 0.7378,
+        "mse": 0.2063202178955078
+      },
+      "training_seconds": 15.76200962398434
+    },
+    {
+      "epoch": 8,
+      "validation": {
+        "accuracy": 0.743,
+        "mse": 0.20159949951171874
+      },
+      "training_seconds": 18.004234041000018
+    },
+    {
+      "epoch": 9,
+      "validation": {
+        "accuracy": 0.7462,
+        "mse": 0.19776654357910156
+      },
+      "training_seconds": 20.25884062401019
+    },
+    {
+      "epoch": 10,
+      "validation": {
+        "accuracy": 0.7486,
+        "mse": 0.19407737731933594
+      },
+      "training_seconds": 22.50666512400494
+    }
+  ],
+  "best_epoch": 10,
+  "validation_accuracy": 0.7486,
+  "train": {
+    "accuracy": 0.7566545454545455,
+    "mse": 0.19099182295365766
+  },
+  "test": {
+    "accuracy": 0.7428,
+    "mse": 0.19554615783691406
+  },
+  "gap": 0.013854545454545453,
+  "training_seconds_including_compile": 22.50666512400494,
+  "first_step_seconds_including_compile": 0.13393366598756984,
+  "total_seconds": 24.41283091600053,
+  "bank_bytes": 2123780,
+  "optimizer_movement": 0.0,
+  "selector": null,
+  "selected_checkpoint_teacher_updates": 0,
+  "train_examples": 55000,
+  "validation_examples": 5000,
+  "test_examples": 10000,
+  "diagnostics": {
+    "layer_cosines": [
+      0.03172404319047928,
+      0.08533313125371933,
+      0.003098823828622699,
+      -0.1427726000547409,
+      -0.062044937163591385,
+      -0.16056935489177704,
+      -0.08988775312900543,
+      0.009199567139148712,
+      -0.05538889393210411,
+      -0.07954013347625732,
+      -0.15946020185947418,
+      -0.01600322127342224,
+      -0.061761870980262756,
+      -0.01537333708256483,
+      0.040588658303022385,
+      0.4689880311489105,
+      0.9881676435470581,
+      0.9851051568984985,
+      0.9646751880645752,
+      0.9477118849754333,
+      0.922082245349884,
+      0.9018785953521729,
+      0.8937942385673523,
+      0.9091669917106628,
+      0.9051623344421387,
+      0.9023803472518921,
+      0.903567373752594,
+      0.9201927185058594,
+      0.9429759979248047,
+      0.9654610753059387,
+      0.9864572882652283,
+      0.999419093132019
+    ],
+    "residual_rms": 0.0005739764892496169,
+    "stationarity_rms": 0.0013877047458663583,
+    "initial_dual_rms": 0.0,
+    "isolated_lookup_seconds": 3.2957992516458035e-05,
+    "lookup_benchmark": "dynamic_inputs"
+  },
+  "backend": "cpu",
+  "jax_version": "0.10.2"
+}
