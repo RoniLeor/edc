@@ -1,10 +1,10 @@
-# GeoDual
+# EDC — Elastic Dual Coupling
 
 **Elastic dual coupling for predictive coding with fewer settling steps.**
 
 [Method](#method) · [Results](#results) · [Gradient comparison](#gradient-comparison) · [Reproduce](#reproduce)
 
-GeoDual extends augmented Lagrangian predictive coding (PC-ALM) with retrieved
+EDC extends augmented Lagrangian predictive coding (PC-ALM) with retrieved
 multiplier initialization and a small, fading connection between mirrored layers.
 This is an independent research implementation based on
 [SakanaAI/pc-alm](https://github.com/SakanaAI/pc-alm), not an official Sakana AI release.
@@ -105,8 +105,8 @@ Python 3.11 and [uv](https://docs.astral.sh/uv/) are sufficient; no cloud accoun
 Run commands from the repository root.
 
 ```sh
-git clone https://github.com/RoniLeor/geodual.git
-cd geodual
+git clone https://github.com/RoniLeor/edc.git
+cd edc
 uv sync --frozen --python 3.11
 
 # One elastic-GDI experiment (downloads the checksum-verified dataset).
@@ -152,5 +152,5 @@ The reported elastic results use the original MSE only.
 Based on [Augmented Lagrangian Predictive Coding](https://arxiv.org/abs/2605.31022)
 by Jeffrey Seely and Julian Gould, and the MIT-licensed
 [Sakana AI reference](https://github.com/SakanaAI/pc-alm/tree/660747f61a8a7e547c0ecd2c48c8883380a7d1f6).
-The [upstream notice](THIRD_PARTY_LICENSE) is preserved. GeoDual is released under
+The [upstream notice](THIRD_PARTY_LICENSE) is preserved. EDC is released under
 [MIT](LICENSE). Please cite the original paper when using its formulation.
