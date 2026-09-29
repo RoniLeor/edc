@@ -1,7 +1,6 @@
 """Bounded, age-gated training-example retrieval for multiplier initialization."""
 
-from dataclasses import dataclass, replace
-from math import isfinite
+from dataclasses import dataclass
 from typing import NamedTuple
 
 import jax
@@ -18,7 +17,6 @@ class Records(NamedTuple):
     duals: jax.Array
     stamps: jax.Array
     cursor: jax.Array
-    movement: jax.Array
 
 
 @dataclass(frozen=True)
@@ -32,11 +30,8 @@ class Memory:
     minimum_similarity: float = 0.5
     temperature: float = 0.1
     mismatch: bool = False
-    drift_scale: float = 0.0
 
     def __post_init__(self) -> None:
-        if not isfinite(self.drift_scale) or self.drift_scale < 0:
-            raise ValueError("Drift scale must be finite and nonnegative")
         if not 1 <= self.neighbors <= self.capacity or not 0 <= self.strength <= 1:
             raise ValueError("Invalid capacity, neighbors, or strength")
         if self.max_age < 1 or not -1 <= self.minimum_similarity < 1 or self.temperature <= 0:
@@ -51,7 +46,6 @@ class Memory:
             duals=jnp.zeros((self.capacity, layers, width)),
             stamps=jnp.full((self.capacity,), -self.max_age - 1),
             cursor=jnp.asarray(0),
-            movement=jnp.zeros((self.capacity if self.drift_scale > 0 else 0,)),
         )
 
     def __call__(
@@ -63,7 +57,6 @@ class Memory:
         labels: jax.Array,
         ids: jax.Array,
         step: jax.Array,
-        movement: jax.Array | None = None,
     ) -> jax.Array:
         key_norm: jax.Array = keys / jnp.maximum(
             jnp.linalg.norm(keys, axis=-1, keepdims=True), 1e-8
@@ -96,47 +89,10 @@ class Memory:
             0,
             1,
         ) * jnp.exp(-age[indices] / self.max_age)
-        if self.drift_scale > 0:
-            if movement is None:
-                raise ValueError("Optimizer movement is required when drift gating is enabled")
-            distance: jax.Array = jnp.maximum(movement - bank.movement[indices], 0)
-            confidence *= jnp.exp(-distance / self.drift_scale)
         initial: jax.Array = self.strength * jnp.einsum(
             "bk,bklw->lbw", weights * confidence, bank.duals[indices]
         )
         return jax.lax.stop_gradient(initial)
-
-    def candidates(
-        self,
-        *,
-        bank: Records,
-        keys: jax.Array,
-        errors: jax.Array,
-        labels: jax.Array,
-        ids: jax.Array,
-        step: jax.Array,
-        movement: jax.Array | None = None,
-    ) -> jax.Array:
-        """Zero, ordinary weighted average, and strongest valid individual neighbor."""
-        average: jax.Array = self(
-            bank=bank,
-            keys=keys,
-            errors=errors,
-            labels=labels,
-            ids=ids,
-            step=step,
-            movement=movement,
-        )
-        strongest: jax.Array = replace(self, neighbors=1)(
-            bank=bank,
-            keys=keys,
-            errors=errors,
-            labels=labels,
-            ids=ids,
-            step=step,
-            movement=movement,
-        )
-        return jnp.stack((jnp.zeros_like(average), average, strongest), axis=0)
 
     def insert(
         self,
@@ -148,16 +104,10 @@ class Memory:
         ids: jax.Array,
         duals: jax.Array,
         step: jax.Array,
-        movement: jax.Array | None = None,
     ) -> Records:
         if keys.shape[0] > self.capacity:
             raise ValueError("Bank capacity must cover a full batch")
         indices: jax.Array = (bank.cursor + jnp.arange(keys.shape[0])) % self.capacity
-        positions: jax.Array = bank.movement
-        if self.drift_scale > 0:
-            if movement is None:
-                raise ValueError("Optimizer movement is required when drift gating is enabled")
-            positions = positions.at[indices].set(movement)
         return Records(
             keys=bank.keys.at[indices].set(
                 keys / jnp.maximum(jnp.linalg.norm(keys, axis=-1, keepdims=True), 1e-8)
@@ -170,5 +120,4 @@ class Memory:
             duals=bank.duals.at[indices].set(jnp.transpose(duals, axes=(1, 0, 2))),
             stamps=bank.stamps.at[indices].set(step),
             cursor=(bank.cursor + keys.shape[0]) % self.capacity,
-            movement=positions,
         )

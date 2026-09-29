@@ -1,5 +1,5 @@
 {
-  "tests": "71 passed in 45.52s after removing spline support",
+  "tests": "39 passed in 19.91s after removing unrelated experimental workflows",
   "ruff": "passed",
   "pyright": "passed",
   "ty": "passed",
@@ -7,7 +7,7 @@
   "run_hashes": "verified",
   "markdown_local_links": "verified",
   "figures": "four PNG/SVG/PDF figures visually inspected",
-  "gradients": "54 finite matched-weight combinations across 6 checkpoints",
+  "gradients": "All 54 matched-weight measurements reproduced exactly after cleanup",
   "clean_checkout": "Initial publication: uv sync --frozen --python 3.11; installed CLI; full six-checkpoint gradient reproduction passed",
   "gradient_reproduction_max_absolute_difference": 0
 }

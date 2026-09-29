@@ -145,9 +145,8 @@ protocol. No convergence theorem, superior accuracy ceiling, out-of-distribution
 robustness or ImageNet improvement is established. Longer settling also extends
 the coupling phase; its integrated strength is not held constant across budgets.
 
-Optional CE, supervised contrastive, drift-gating and learned-selector
-experiments remain in the package but are **not used in the figures above**.
-The reported elastic results use the original MSE only.
+The package focuses on MNIST/Fashion-MNIST classification and elastic coupling.
+CE is available as an optional loss; the reported elastic results use the original MSE only.
 
 Based on [Augmented Lagrangian Predictive Coding](https://arxiv.org/abs/2605.31022)
 by Jeffrey Seely and Julian Gould, and the MIT-licensed

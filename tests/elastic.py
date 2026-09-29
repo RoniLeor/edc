@@ -77,7 +77,6 @@ def test_elastic_changes_real_jitted_training_and_is_finite() -> None:
     assert not np.array_equal(np.asarray(a.bank.duals), np.asarray(b.bank.duals))
     assert not np.array_equal(np.asarray(a.weights.hidden), np.asarray(b.weights.hidden))
     assert int(b.step) == 5
-    assert b.selector is None
 
 
 def test_elastic_validation_and_cli(tmp_path: Path) -> None:
@@ -96,8 +95,6 @@ def test_elastic_validation_and_cli(tmp_path: Path) -> None:
         Settler(network=network, steps=16, elastic=0.05, alpha=0)
     with pytest.raises(ValueError, match="requires GDI"):
         Config(method="bp", elastic=0.05)
-    with pytest.raises(ValueError, match="no selector"):
-        Config(selector="learned", elastic=0.05)
     trainer: MagicMock
     with patch("geodual.cli.load"), patch("geodual.cli.Trainer") as trainer:
         trainer.return_value.run.return_value = {"ok": True}

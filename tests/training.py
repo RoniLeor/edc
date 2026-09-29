@@ -108,3 +108,31 @@ def test_cli_writes_summary_and_preserves_outputs(tmp_path: Path) -> None:
         assert (tmp_path / "summary.json").read_text() == '{\n  "ok": true\n}\n'
         with pytest.raises(SystemExit):
             main(["--output", str(tmp_path)])
+
+
+def test_training_preserves_frozen_ordinary_gdi() -> None:
+    trainer: Trainer = Trainer(
+        config=Config(
+            method="gdi",
+            objective="ce",
+            depth=3,
+            width=4,
+            inputs=2,
+            outputs=2,
+            batch=4,
+            capacity=8,
+            steps=4,
+        )
+    )
+    state: State = trainer.initialize()
+    x: jax.Array = jnp.asarray([[1.0, 0.0], [0.0, 1.0], [-1.0, 0.0], [0.0, -1.0]])
+    y: jax.Array = jnp.eye(2)[jnp.asarray([0, 1, 0, 1])]
+    step: int
+    for step in range(6):
+        state = trainer(state=state, x=x, y=y, ids=jnp.arange(4) + 4 * step)
+    with np.load(Path(__file__).parent / "fixtures" / "movement.npz") as expected:
+        name: str
+        value: jax.Array
+        for name, value in zip(("first", "hidden", "readout"), state.weights, strict=True):
+            np.testing.assert_array_equal(actual=value, desired=expected[name])
+        np.testing.assert_array_equal(actual=state.bank.duals, desired=expected["duals"])

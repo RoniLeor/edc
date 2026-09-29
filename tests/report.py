@@ -9,7 +9,7 @@ import pytest
 from geodual.report import Report, Trial, main, read_trials
 
 
-@pytest.mark.parametrize("dataset", ["mnist", "imagenet"])
+@pytest.mark.parametrize("dataset", ["mnist", "fashion"])
 def test_report_and_cli(tmp_path: Path, dataset: str) -> None:
     root: Path = tmp_path / "runs"
     method: str

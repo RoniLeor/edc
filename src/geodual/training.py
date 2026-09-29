@@ -13,13 +13,9 @@ import numpy as np
 import optax
 
 from .data import Dataset, Examples, IntArray
-from .energy import RankingState
 from .memory import Memory, Records
 from .model import Network, Weights
-from .selection import Choice, Selector
 from .settling import MAX_ELASTIC, MIN_ELASTIC_STEPS, Equilibrium, Settler
-
-MOVEMENT_EPSILON: float = 1e-12
 
 
 @dataclass(frozen=True)
@@ -42,30 +38,18 @@ class Config:
     outputs: int = 10
     memory_age: int = 8
     objective: str = "mse"
-    drift_scale: float = 0.0
     neighbors: int = 4
-    selector: str = "none"
     elastic: float = 0.0
 
     def __post_init__(self) -> None:
         if not np.isfinite(self.elastic) or not 0 <= self.elastic <= MAX_ELASTIC:
             raise ValueError("Elastic strength must be finite and between zero and 0.5")
-        if self.elastic > 0 and (
-            self.method != "gdi" or self.selector != "none" or self.steps < MIN_ELASTIC_STEPS
-        ):
-            raise ValueError("Elastic coupling requires GDI, no selector, and at least four steps")
-        if self.selector not in {"none", "residual", "learned"}:
-            raise ValueError("Unknown energy selector")
-        if self.selector != "none" and (self.method != "gdi" or self.objective != "mse"):
-            raise ValueError("Energy selection requires squared-error GDI with average retrieval")
+        if self.elastic > 0 and (self.method != "gdi" or self.steps < MIN_ELASTIC_STEPS):
+            raise ValueError("Elastic coupling requires GDI and at least four steps")
         if not 1 <= self.neighbors <= self.capacity:
             raise ValueError("Neighbors must fit memory capacity")
-        if not np.isfinite(self.drift_scale) or self.drift_scale < 0:
-            raise ValueError("Drift scale must be finite and nonnegative")
-        if self.drift_scale > 0 and self.method != "gdi":
-            raise ValueError("Optimizer drift gating is only defined for GDI")
-        if self.objective not in {"mse", "ce", "supcon"}:
-            raise ValueError("Objective must be mse, ce, or supcon")
+        if self.objective not in {"mse", "ce"}:
+            raise ValueError("Objective must be mse or ce")
         if self.method not in {"bp", "pc", "alm", "gdi", "mismatch"}:
             raise ValueError("Unknown training method")
         if min(self.epochs, self.batch, self.steps) < 1 or self.learning_rate <= 0:
@@ -83,8 +67,6 @@ class State(NamedTuple):
     optimizer: optax.OptState
     bank: Records
     step: jax.Array
-    movement: jax.Array
-    selector: RankingState | None = None
 
 
 @dataclass(frozen=True)
@@ -110,17 +92,7 @@ class Trainer:
             strength=self.config.strength,
             max_age=self.config.memory_age,
             mismatch=self.config.method == "mismatch",
-            drift_scale=self.config.drift_scale,
             neighbors=self.config.neighbors,
-        )
-
-    @property
-    def selection(self) -> Selector:
-        return Selector(
-            network=self.network,
-            memory=self.memory,
-            mode=self.config.selector,
-            rate=self.config.rate,
         )
 
     @property
@@ -144,29 +116,9 @@ class Trainer:
                 outputs=self.config.outputs,
             ),
             step=jnp.asarray(0),
-            movement=jnp.asarray(0.0),
-            selector=(
-                self.selection.ranker.initialize(seed=self.config.seed)
-                if self.config.selector != "none"
-                else None
-            ),
         )
 
     def initial(self, *, state: State, x: jax.Array, y: jax.Array, ids: jax.Array) -> jax.Array:
-        if self.config.selector != "none":
-            if state.selector is None:
-                raise ValueError("Missing selector state")
-            return self.selection(
-                weights=state.weights,
-                bank=state.bank,
-                x=x,
-                y=y,
-                ids=ids,
-                step=state.step,
-                movement=state.movement,
-                state=state.selector,
-                train=False,
-            ).initial
         states: jax.Array = self.network(weights=state.weights, x=x)
         if self.config.method not in {"gdi", "mismatch"} or self.config.strength == 0:
             return jnp.zeros_like(states)
@@ -181,36 +133,16 @@ class Trainer:
             labels=jnp.argmax(y, axis=-1),
             ids=ids,
             step=state.step,
-            movement=state.movement,
         )
 
     @partial(jax.jit, static_argnums=0)
     def __call__(self, state: State, x: jax.Array, y: jax.Array, ids: jax.Array) -> State:
         gradient: Weights
         bank: Records = state.bank
-        selector: RankingState | None = state.selector
         if self.config.method == "bp":
             gradient = jax.grad(self.network.loss)(state.weights, x, y)
         else:
-            initial: jax.Array
-            if self.config.selector != "none":
-                if selector is None:
-                    raise ValueError("Missing selector state")
-                choice: Choice = self.selection(
-                    weights=state.weights,
-                    bank=state.bank,
-                    x=x,
-                    y=y,
-                    ids=ids,
-                    step=state.step,
-                    movement=state.movement,
-                    state=selector,
-                    train=True,
-                )
-                initial = choice.initial
-                selector = choice.state
-            else:
-                initial = self.initial(state=state, x=x, y=y, ids=ids)
+            initial: jax.Array = self.initial(state=state, x=x, y=y, ids=ids)
             result: Equilibrium = self.settler(weights=state.weights, x=x, y=y, initial=initial)
             gradient = self.settler.gradient(weights=state.weights, x=x, y=y, result=result)
             if self.config.method in {"gdi", "mismatch"} and self.config.strength > 0:
@@ -227,7 +159,6 @@ class Trainer:
                     ids=ids,
                     duals=result.duals,
                     step=state.step,
-                    movement=state.movement,
                 )
         updates: optax.Updates
         optimizer: optax.OptState
@@ -236,26 +167,15 @@ class Trainer:
             state.optimizer,
             state.weights,
         )
-        movement: jax.Array = state.movement
-        if self.config.drift_scale > 0 and self.config.strength > 0:
-            movement += self.distance(weights=state.weights, updates=updates)
         return State(
             weights=cast(Weights, optax.apply_updates(state.weights, updates)),
             optimizer=optimizer,
             bank=bank,
             step=state.step + 1,
-            movement=movement,
-            selector=selector,
         )
-
-    def distance(self, *, weights: Weights, updates: optax.Updates) -> jax.Array:
-        """Relative size of the applied Adam update; a path-length proxy, not function drift."""
-        return optax.tree.norm(updates) / jnp.maximum(optax.tree.norm(weights), MOVEMENT_EPSILON)
 
     @partial(jax.jit, static_argnums=0)
     def metrics(self, weights: Weights, x: jax.Array, y: jax.Array) -> jax.Array:
-        if self.config.objective == "supcon":
-            raise ValueError("SupCon requires frozen probe evaluation")
         output: jax.Array = self.network.output(
             weights=weights,
             states=self.network(weights=weights, x=x),
@@ -312,10 +232,6 @@ class Trainer:
                     first_step_seconds = perf_counter() - batch_start
             jax.block_until_ready(state)
             training_seconds += perf_counter() - batch_start
-            if state.selector is not None and not all(
-                np.isfinite(np.asarray(value)).all() for value in jax.tree.leaves(state.selector)
-            ):
-                raise FloatingPointError("Non-finite selector state")
             validation: dict[str, float] = self.evaluate(
                 weights=state.weights,
                 examples=data.validation,
@@ -345,13 +261,6 @@ class Trainer:
             hidden=np.asarray(best.weights.hidden),
             readout=np.asarray(best.weights.readout),
         )
-        if best.selector is not None and self.config.selector == "learned":
-            np.savez(
-                output / "selector.npz",
-                first=np.asarray(best.selector.parameters.first),
-                bias=np.asarray(best.selector.parameters.bias),
-                readout=np.asarray(best.selector.parameters.readout),
-            )
         diagnostics: dict[str, object] = self.diagnose(state=best, examples=data.validation)
         return {
             "config": asdict(self.config),
@@ -365,13 +274,6 @@ class Trainer:
             "first_step_seconds_including_compile": first_step_seconds,
             "total_seconds": perf_counter() - started,
             "bank_bytes": sum(v.nbytes for v in best.bank),
-            "optimizer_movement": float(best.movement),
-            "selector": self.selection.report(state.selector)
-            if state.selector is not None
-            else None,
-            "selected_checkpoint_teacher_updates": (
-                int(best.selector.updates) if best.selector is not None else 0
-            ),
             "train_examples": len(data.train.x),
             "validation_examples": len(data.validation.x),
             "test_examples": len(data.test.x),

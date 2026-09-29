@@ -45,7 +45,7 @@ class Alignment:
         required: int = (BANK_BATCHES + QUERY_BATCHES) * self.config.batch
         if len(examples.x) < required:
             raise ValueError("Insufficient disjoint alignment examples")
-        config: Config = replace(self.config, method="gdi", elastic=0, selector="none")
+        config: Config = replace(self.config, method="gdi", elastic=0)
         state: State = Calibration(config=config).fill(weights=weights, examples=examples)
         rows: list[Measurement] = []
         method: str

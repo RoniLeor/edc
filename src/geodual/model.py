@@ -7,8 +7,6 @@ from typing import NamedTuple
 import jax
 import jax.numpy as jnp
 
-from .contrast import SupCon
-
 
 class Weights(NamedTuple):
     """Three parameter groups; hidden weights stack all residual blocks."""
@@ -29,8 +27,8 @@ class Network:
     objective: str = "mse"
 
     def __post_init__(self) -> None:
-        if self.objective not in {"mse", "ce", "supcon"}:
-            raise ValueError("Objective must be mse, ce, or supcon")
+        if self.objective not in {"mse", "ce"}:
+            raise ValueError("Objective must be mse or ce")
         if self.depth < 2 or min(self.width, self.inputs, self.outputs) < 1:
             raise ValueError("Positive dimensions and depth >= 2 required")
 
@@ -61,16 +59,12 @@ class Network:
 
     def supervised(self, prediction: jax.Array, y: jax.Array) -> jax.Array:
         """Per-example supervised objective, distinct from layer-constraint penalties."""
-        if self.objective == "supcon":
-            return SupCon()(prediction=prediction, y=y)
         if self.objective == "ce":
             return -jnp.sum(y * jax.nn.log_softmax(prediction, axis=-1), axis=-1)
         return 0.5 * jnp.sum(jnp.square(prediction - y), axis=-1)
 
     def error(self, *, prediction: jax.Array, y: jax.Array) -> jax.Array:
         """Per-example output gradient used as the objective-conditioned retrieval key."""
-        if self.objective == "supcon":
-            return SupCon().gradient(prediction=prediction, y=y)
         if self.objective == "ce":
             return jax.nn.softmax(prediction, axis=-1) - y
         return prediction - y
