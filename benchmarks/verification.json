@@ -1,5 +1,5 @@
 {
-  "tests": "39 passed in 19.91s after removing unrelated experimental workflows",
+  "tests": "33 passed in 13.94s after dead-code cleanup",
   "ruff": "passed",
   "pyright": "passed",
   "ty": "passed",
@@ -9,5 +9,6 @@
   "figures": "four PNG/SVG/PDF figures visually inspected",
   "gradients": "All 54 matched-weight measurements reproduced exactly after cleanup",
   "clean_checkout": "Initial publication: uv sync --frozen --python 3.11; installed CLI; full six-checkpoint gradient reproduction passed",
-  "gradient_reproduction_max_absolute_difference": 0
+  "gradient_reproduction_max_absolute_difference": 0,
+  "dead_code_audit": "Removed obsolete reporting and multiplier diagnostics; Vulture at 80 percent confidence clean; remaining low-confidence CLI and schema-field findings manually verified"
 }

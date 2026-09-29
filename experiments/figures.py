@@ -189,7 +189,6 @@ right: float
 rad: float
 extension: str
 label: str
-color: str
 offset: float
 positions: list[float] = [1.2, 2.5, 5.2, 7.9, 9.2]
 names: list[str] = ["1", "2", "16", "30", "31"]
