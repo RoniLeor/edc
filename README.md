@@ -9,7 +9,7 @@ multiplier initialization and a small, fading connection between mirrored layers
 This is an independent research implementation based on
 [SakanaAI/pc-alm](https://github.com/SakanaAI/pc-alm), not an official Sakana AI release.
 
-![Elastic dual coupling architecture](assets/architecture.png)
+![Elastic dual coupling architecture](assets/architecture.png?v=edc)
 
 [Vector SVG](assets/architecture.svg) · [Paper PDF](assets/architecture.pdf)
 
