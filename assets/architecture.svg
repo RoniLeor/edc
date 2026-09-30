@@ -779,7 +779,7 @@ L 838.08 233.64
    </g>
   </g>
   <g id="text_32">
-   <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #48515b" x="432" y="386.1" transform="rotate(-0 432 386.1)">GDI retrieves the initial multipliers from training memory. Both partners read old duals; no extra gradient evaluations.</text>
+   <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #48515b" x="432" y="386.1" transform="rotate(-0 432 386.1)">EDC retrieves the initial multipliers from training memory. Both partners read old duals; no extra gradient evaluations.</text>
   </g>
  </g>
  <defs>
