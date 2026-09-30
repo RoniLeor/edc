@@ -292,7 +292,7 @@ fig.text(
 fig.text(
     0.50,
     0.025,
-    "GDI retrieves the initial multipliers from training memory. "
+    "EDC retrieves the initial multipliers from training memory. "
     "Both partners read old duals; no extra gradient evaluations.",
     ha="center",
     fontsize=9,
